@@ -1,0 +1,16 @@
+sudo: required
+services:
+  - docker
+  - mongodb
+  - redis-server
+before_install:
+  - yarn
+before_script:
+  - sleep 15
+script:
+  - yarn test
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
